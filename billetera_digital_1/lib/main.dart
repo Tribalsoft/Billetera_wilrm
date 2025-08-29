@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/home_screen.dart';
+import 'screens/initial_screen.dart';
 import 'constants/app_colors.dart';
 
 /// Punto de entrada principal de la aplicación
@@ -42,7 +42,7 @@ class BilleteraDigitalApp extends StatelessWidget {
       ),
       
       // Pantalla inicial de la aplicación
-      home: const HomeScreen(),
+      home: const InitialScreen(),
     );
   }
 }

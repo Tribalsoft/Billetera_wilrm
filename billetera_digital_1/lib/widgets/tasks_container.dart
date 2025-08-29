@@ -4,7 +4,7 @@ import '../constants/app_strings.dart';
 import '../constants/app_dimensions.dart';
 
 /// Widget que contiene las opciones de tareas
-/// Se divide en dos sub-contenedores: Comparar y Tránsito
+/// Se divide en dos sub-contenedores: Comprar y Tránsito
 class TasksContainer extends StatelessWidget {
   const TasksContainer({super.key});
 
@@ -42,9 +42,9 @@ class TasksContainer extends StatelessWidget {
           
           // Contenedor con las dos opciones de tareas - Ocupa el espacio restante
           Expanded(
-            child: Row(
+            child: Column(
               children: [
-                // Primera opción: Comparar
+                // Primera opción: Comprar
                 Expanded(
                   child: _buildTaskCard(
                     title: AppStrings.compareTitle,
@@ -52,7 +52,7 @@ class TasksContainer extends StatelessWidget {
                     color: AppColors.compareContainer,
                   ),
                 ),
-                const SizedBox(width: AppDimensions.spaceLarge),
+                const SizedBox(height: AppDimensions.spaceLarge),
                 
                 // Segunda opción: Tránsito
                 Expanded(
@@ -101,7 +101,7 @@ class TasksContainer extends StatelessWidget {
         children: [
           // Icono representativo
           Icon(
-            title == AppStrings.compareTitle ? Icons.compare_arrows : Icons.directions_car,
+            title == AppStrings.compareTitle ? Icons.shopping_cart : Icons.directions_car,
             color: AppColors.textWhite,
             size: 32,
           ),

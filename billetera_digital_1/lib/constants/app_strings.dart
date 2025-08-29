@@ -11,8 +11,8 @@ class AppStrings {
   // Sección de tareas
   static const String tasksTitle = 'Tareas';
   
-  // Opciones de comparación
-  static const String compareTitle = 'Comparar';
+  // Opciones de compra
+  static const String compareTitle = 'Comprar';
   static const String compareSubtitle = 'ir al Ara';
   
   // Opciones de tránsito
