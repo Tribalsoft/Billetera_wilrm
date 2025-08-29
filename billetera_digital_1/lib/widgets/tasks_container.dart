@@ -11,9 +11,10 @@ class TasksContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // Configuración del contenedor principal de tareas
-      padding: const EdgeInsets.all(AppDimensions.paddingMedium),
-      margin: const EdgeInsets.all(AppDimensions.paddingMedium),
+      // Configuración del contenedor principal de tareas - Ocupa todo el espacio disponible
+      width: double.infinity,
+      height: double.infinity,
+      padding: const EdgeInsets.all(AppDimensions.paddingLarge),
       decoration: BoxDecoration(
         color: AppColors.tasksContainer,
         borderRadius: BorderRadius.circular(AppDimensions.borderRadiusMedium),
@@ -29,38 +30,40 @@ class TasksContainer extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Título de la sección
-          const Text(
+          Text(
             AppStrings.tasksTitle,
-            style: TextStyle(
-              fontSize: 20,
+            style: const TextStyle(
+              fontSize: 24,
               fontWeight: FontWeight.bold,
               color: AppColors.textWhite,
             ),
           ),
-          const SizedBox(height: AppDimensions.spaceMedium),
+          const SizedBox(height: AppDimensions.spaceLarge),
           
-          // Contenedor con las dos opciones de tareas
-          Row(
-            children: [
-              // Primera opción: Comparar
-              Expanded(
-                child: _buildTaskCard(
-                  title: AppStrings.compareTitle,
-                  subtitle: AppStrings.compareSubtitle,
-                  color: AppColors.compareContainer,
+          // Contenedor con las dos opciones de tareas - Ocupa el espacio restante
+          Expanded(
+            child: Row(
+              children: [
+                // Primera opción: Comparar
+                Expanded(
+                  child: _buildTaskCard(
+                    title: AppStrings.compareTitle,
+                    subtitle: AppStrings.compareSubtitle,
+                    color: AppColors.compareContainer,
+                  ),
                 ),
-              ),
-              const SizedBox(width: AppDimensions.spaceMedium),
-              
-              // Segunda opción: Tránsito
-              Expanded(
-                child: _buildTaskCard(
-                  title: AppStrings.transitTitle,
-                  subtitle: AppStrings.transitSubtitle,
-                  color: AppColors.transitContainer,
+                const SizedBox(width: AppDimensions.spaceLarge),
+                
+                // Segunda opción: Tránsito
+                Expanded(
+                  child: _buildTaskCard(
+                    title: AppStrings.transitTitle,
+                    subtitle: AppStrings.transitSubtitle,
+                    color: AppColors.transitContainer,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ],
       ),
@@ -77,16 +80,18 @@ class TasksContainer extends StatelessWidget {
     required Color color,
   }) {
     return Container(
-      padding: const EdgeInsets.all(AppDimensions.paddingMedium),
-      height: AppDimensions.containerHeightSmall,
+      // Ocupa todo el ancho y alto disponible
+      width: double.infinity,
+      height: double.infinity,
+      padding: const EdgeInsets.all(AppDimensions.paddingLarge),
       decoration: BoxDecoration(
         color: color,
-        borderRadius: BorderRadius.circular(AppDimensions.borderRadiusSmall),
+        borderRadius: BorderRadius.circular(AppDimensions.borderRadiusMedium),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 4,
-            offset: const Offset(0, 2),
+            color: Colors.black.withOpacity(0.1),
+            blurRadius: 6,
+            offset: const Offset(0, 3),
           ),
         ],
       ),
@@ -94,11 +99,19 @@ class TasksContainer extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          // Icono representativo
+          Icon(
+            title == AppStrings.compareTitle ? Icons.compare_arrows : Icons.directions_car,
+            color: AppColors.textWhite,
+            size: 32,
+          ),
+          const SizedBox(height: AppDimensions.spaceMedium),
+          
           // Título de la tarea
           Text(
             title,
             style: const TextStyle(
-              fontSize: 16,
+              fontSize: 20,
               fontWeight: FontWeight.bold,
               color: AppColors.textWhite,
             ),
@@ -109,8 +122,8 @@ class TasksContainer extends StatelessWidget {
           Text(
             subtitle,
             style: TextStyle(
-              fontSize: 14,
-              color: AppColors.textWhite.withOpacity(0.8),
+              fontSize: 16,
+              color: AppColors.textWhite.withOpacity(0.9),
             ),
           ),
         ],

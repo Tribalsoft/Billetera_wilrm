@@ -11,9 +11,10 @@ class UserInfoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // Configuración visual del contenedor
+      // Configuración visual del contenedor - Ocupa todo el espacio disponible
+      width: double.infinity,
+      height: double.infinity,
       padding: const EdgeInsets.all(AppDimensions.paddingLarge),
-      margin: const EdgeInsets.all(AppDimensions.paddingMedium),
       decoration: BoxDecoration(
         color: AppColors.userInfoContainer,
         borderRadius: BorderRadius.circular(AppDimensions.borderRadiusMedium),
@@ -28,47 +29,60 @@ class UserInfoCard extends StatelessWidget {
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly, // Distribución equitativa
         children: [
           // Saludo al usuario
           Text(
             AppStrings.greeting,
             style: const TextStyle(
-              fontSize: 24,
+              fontSize: 28,
               fontWeight: FontWeight.bold,
               color: AppColors.textWhite,
             ),
           ),
-          const SizedBox(height: AppDimensions.spaceSmall),
           
           // Información de contacto
           Row(
             children: [
+              const Icon(
+                Icons.email,
+                color: AppColors.textWhite,
+                size: 20,
+              ),
+              const SizedBox(width: AppDimensions.spaceSmall),
               const Text(
                 AppStrings.contactLabel,
                 style: TextStyle(
-                  fontSize: 16,
+                  fontSize: 18,
                   color: AppColors.textWhite,
                 ),
               ),
               const SizedBox(width: AppDimensions.spaceSmall),
-              Text(
-                AppStrings.userEmail,
-                style: TextStyle(
-                  fontSize: 16,
-                  color: AppColors.textWhite.withOpacity(0.9),
+              Flexible(
+                child: Text(
+                  AppStrings.userEmail,
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: AppColors.textWhite.withOpacity(0.9),
+                  ),
                 ),
               ),
             ],
           ),
-          const SizedBox(height: AppDimensions.spaceSmall),
           
           // Saldo disponible
           Row(
             children: [
+              const Icon(
+                Icons.account_balance_wallet,
+                color: AppColors.textWhite,
+                size: 24,
+              ),
+              const SizedBox(width: AppDimensions.spaceSmall),
               const Text(
                 AppStrings.balanceLabel,
                 style: TextStyle(
-                  fontSize: 16,
+                  fontSize: 18,
                   color: AppColors.textWhite,
                 ),
               ),
@@ -76,7 +90,7 @@ class UserInfoCard extends StatelessWidget {
               Text(
                 AppStrings.balanceAmount,
                 style: const TextStyle(
-                  fontSize: 20,
+                  fontSize: 24,
                   fontWeight: FontWeight.bold,
                   color: AppColors.textWhite,
                 ),
