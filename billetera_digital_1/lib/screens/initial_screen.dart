@@ -22,24 +22,29 @@ class _InitialScreenState extends State<InitialScreen> {
 
   /// Inicia el flujo de pantallas inicial
   void _startInitialFlow() async {
+    print('Iniciando flujo de pantallas...');
     // Simula un proceso de carga de 2 segundos
     await Future.delayed(const Duration(seconds: 2));
     
     if (!mounted) return;
     
+    print('Carga completada, verificando resultado...');
     // Simula un resultado aleatorio (puedes cambiar esto por tu lógica real)
     // Para demo: 70% éxito, 30% fallo
     final success = DateTime.now().millisecond % 10 < 7;
     
-    if (success) {
+    print('Resultado: ${success ? 'éxito' : 'fallo'}');
+    // Temporalmente forzamos que siempre sea éxito para probar la navegación
+    // if (success) {
       _showSuccessScreen();
-    } else {
-      _showFailureScreen();
-    }
+    // } else {
+    //   _showFailureScreen();
+    // }
   }
 
   /// Muestra la pantalla de éxito y luego navega al home
   void _showSuccessScreen() {
+    print('Mostrando pantalla de éxito...');
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
@@ -72,6 +77,7 @@ class _InitialScreenState extends State<InitialScreen> {
 
   /// Navega a la pantalla principal
   void _navigateToHome() {
+    print('Navegando a HomeScreen...');
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (context) => const HomeScreen()),

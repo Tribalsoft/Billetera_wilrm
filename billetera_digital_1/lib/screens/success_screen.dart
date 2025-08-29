@@ -66,7 +66,14 @@ class SuccessScreen extends StatelessWidget {
               
               // Botón para continuar
               ElevatedButton(
-                onPressed: onContinue ?? () => Navigator.pop(context),
+                onPressed: () {
+                  print('Botón Continuar presionado');
+                  if (onContinue != null) {
+                    onContinue!();
+                  } else {
+                    Navigator.pop(context);
+                  }
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.primaryGreen,
                   foregroundColor: AppColors.textWhite,

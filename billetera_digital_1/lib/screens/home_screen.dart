@@ -11,6 +11,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('HomeScreen build() llamado');
     return Scaffold(
       // Color de fondo de la pantalla
       backgroundColor: AppColors.backgroundColor,
