@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../constants/app_colors.dart';
+import 'home_screen.dart';
 
 /// Pantalla de éxito simple
 /// Muestra un mensaje de confirmación cuando una operación se completa exitosamente
@@ -67,12 +68,11 @@ class SuccessScreen extends StatelessWidget {
               // Botón para continuar
               ElevatedButton(
                 onPressed: () {
-                  print('Botón Continuar presionado');
-                  if (onContinue != null) {
-                    onContinue!();
-                  } else {
-                    Navigator.pop(context);
-                  }
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => const HomeScreen()),
+                    (route) => false,
+                  );
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.primaryGreen,
